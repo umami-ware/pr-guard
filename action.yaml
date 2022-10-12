@@ -1,0 +1,32 @@
+name: 'PR Guard'
+description: 'Enforce specific requirements for PRs, which are not supported by default by Github'
+branding:
+    icon: "git-pull-request"
+    color: "green"
+inputs:
+  token:
+    description: "github access token"
+    required: true
+  check_interval:
+    description: "time interval to perform the check (seconds)"
+    required: false
+    default: "60"
+  timeout:
+    description: "time amount after which PR Guard will throw an error if not all jobs finished (seconds)"
+    required: false
+    default: "1200"
+  required:
+    description: "set required jobs, if not passed, all jobs are required (comma-separated list)"
+    required: false
+    default: ""
+  ignored:
+    description: "set ignored jobs (comma-separated list)"
+    required: false
+    default: ""
+  restrict_pr_branches:
+    description: "restricts pr branch merging sources"
+    required: false
+    default: ""
+runs:
+  using: 'node16'
+  main: './dist/index.js'

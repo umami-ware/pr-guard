@@ -1,0 +1,46 @@
+{
+	"name": "pr-guard",
+	"version": "1.0.0",
+	"description": "Enforce specific requirements for PRs, which are not supported by default by Github",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/umami-ware/pr-guard"
+	},
+	"main": "dist/index.js",
+	"scripts": {
+		"build": "ncc build ./src/index.ts -o dist -m",
+		"watch": "ncc build ./src/index.ts -o dist -m -w"
+	},
+	"husky": {
+		"hooks": {
+			"pre-commit": "npm run build"
+		}
+	},
+	"keywords": [
+		"action",
+		"pr",
+		"pull-request",
+		"merge",
+		"run",
+		"checks"
+	],
+	"author": "Marius Orha",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/umami-ware/pr-guard/issues"
+	},
+	"homepage": "https://github.com/umami-ware/pr-guard#readme",
+	"dependencies": {
+		"@actions/core": "^1.10.0",
+		"@actions/github": "^5.1.1",
+		"micromatch": "^4.0.5"
+	},
+	"devDependencies": {
+		"@typescript-eslint/eslint-plugin": "^5.40.0",
+		"@typescript-eslint/parser": "^5.40.0",
+		"@vercel/ncc": "^0.34.0",
+		"eslint": "^8.25.0",
+		"husky": "^8.0.1",
+		"typescript": "^4.8.4"
+	}
+}
